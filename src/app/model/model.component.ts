@@ -52,6 +52,18 @@ export class ModelComponent implements OnInit, AfterViewInit {
 
   private scene: THREE.Scene;
 
+  /**
+ *Animate the model
+ *
+ * @private
+ * @memberof ModelComponent
+ */
+  private animateModel() {
+    if (this.model) {
+      this.model.rotation.z += 0.005;
+    }
+  }
+
   private createControls = () => {
     const labelRenderer = new CSS2DRenderer();
     labelRenderer.setSize(window.innerWidth, window.innerHeight);
@@ -77,6 +89,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
     this.scene.background = new THREE.Color(0xd4d4d8)
     this.loaderGLTF.load('assets/robot/scene.gltf', (gltf: GLTF) => {
       this.model = gltf.scene.children[0];
+      console.log(this.model);
       var box = new THREE.Box3().setFromObject(this.model);
       box.getCenter(this.model.position); // this re-sets the mesh position
       this.model.position.multiplyScalar(-1);
@@ -132,6 +145,7 @@ export class ModelComponent implements OnInit, AfterViewInit {
     let component: ModelComponent = this;
     (function render() {
       component.renderer.render(component.scene, component.camera);
+      component.animateModel();
       requestAnimationFrame(render);
     }());
   }
