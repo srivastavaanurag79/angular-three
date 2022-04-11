@@ -1,0 +1,11 @@
+Model Information:
+* title:	Super Tactical Droid - Clone Wars
+* source:	https://sketchfab.com/3d-models/super-tactical-droid-clone-wars-617367b06c9d438d81c6a883df9c4014
+* author:	Eddie Roach (https://sketchfab.com/eddie.roach)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Super Tactical Droid - Clone Wars" (https://sketchfab.com/3d-models/super-tactical-droid-clone-wars-617367b06c9d438d81c6a883df9c4014) by Eddie Roach (https://sketchfab.com/eddie.roach) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
