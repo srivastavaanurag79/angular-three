@@ -2,16 +2,17 @@ import { Component, OnInit, AfterViewInit, Input, ViewChild, ElementRef } from '
 import * as THREE from "three";
 import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
 @Component({
   selector: 'app-model',
   templateUrl: './model.component.html',
   styleUrls: ['./model.component.scss']
 })
+
 export class ModelComponent implements OnInit, AfterViewInit {
-  @ViewChild('canvas')
-  private canvasRef: ElementRef;
+
+  @ViewChild('canvas') private canvasRef: ElementRef;
 
   //* Stage Properties
 
@@ -53,24 +54,30 @@ export class ModelComponent implements OnInit, AfterViewInit {
   private scene: THREE.Scene;
 
   /**
- *Animate the model
- *
- * @private
- * @memberof ModelComponent
- */
+   *Animate the model
+   *
+   * @private
+   * @memberof ModelComponent
+   */
   private animateModel() {
     if (this.model) {
       this.model.rotation.z += 0.005;
     }
   }
 
+  /**
+   *create controls
+   *
+   * @private
+   * @memberof ModelComponent
+   */
   private createControls = () => {
-    const labelRenderer = new CSS2DRenderer();
-    labelRenderer.setSize(window.innerWidth, window.innerHeight);
-    labelRenderer.domElement.style.position = 'absolute';
-    labelRenderer.domElement.style.top = '0px';
-    document.body.appendChild(labelRenderer.domElement);
-    this.controls = new OrbitControls(this.camera, labelRenderer.domElement);
+    const renderer = new CSS2DRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0px';
+    document.body.appendChild(renderer.domElement);
+    this.controls = new OrbitControls(this.camera, renderer.domElement);
     this.controls.autoRotate = true;
     this.controls.enableZoom = true;
     this.controls.enablePan = false;
@@ -150,15 +157,6 @@ export class ModelComponent implements OnInit, AfterViewInit {
     }());
   }
 
-  updateScreenPosition() {
-    const vector = new THREE.Vector3(250, 250, 250);
-
-    vector.project(this.camera);
-
-    vector.x = Math.round((0.5 + vector.x / 2) * (this.canvas.width / window.devicePixelRatio));
-    vector.y = Math.round((0.5 - vector.y / 2) * (this.canvas.height / window.devicePixelRatio));
-  }
-
   constructor() { }
 
   ngOnInit(): void {
@@ -169,9 +167,6 @@ export class ModelComponent implements OnInit, AfterViewInit {
     this.createScene();
     this.startRenderingLoop();
     this.createControls();
-    setTimeout(() => {
-      this.updateScreenPosition();
-    }, 100);
   }
 
 

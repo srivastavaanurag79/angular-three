@@ -1,8 +1,10 @@
-# AngularThree
+# Angular + Three.js
 
-In this tutorial, we will go through a simple example. We'll render a 3D Cube, and we'll learn the fundamentals of Three.js and integrate the Three.js scene in Angular.
+This project consists of two examples:
+ 1. [Tutorial to render 3D cube in Angular + Three.js](https://srivastavaanurag79.medium.com/hello-cube-your-first-three-js-scene-in-angular-176c44b9c6c0)
+ 2. [Tutorial to render 3D Model in Angular + Three.js](https://srivastavaanurag79.medium.com/3d-model-three-js-scene-in-angular-7bcbc0d00c31)
 
-[Tutorial to Angular + Three.js](https://srivastavaanurag79.medium.com/hello-cube-your-first-three-js-scene-in-angular-176c44b9c6c0)
+We'll learn the fundamentals of Three.js and integrate the Three.js scene in Angular.
 
 ## Usage
 ```
@@ -11,6 +13,8 @@ git clone <this-repo>
 npm install
 ng serve
 
+localhost:4200 will render cube
+localhost:4200/model will render 3D model
 ```
 
 ## Contributing
